@@ -109,15 +109,28 @@ namespace G_Code
                 int rightValue = EvaluateExpression();
                 return leftValue + rightValue;
             }
-
-            if(CurrentToken.Type == TokenType.Minus)
+            else if(CurrentToken.Type == TokenType.Minus)
             {
                 Eat(TokenType.Minus);
                 int rightValue = EvaluateExpression();
                 return leftValue - rightValue;
             }
 
-            return leftValue;
+            else if(CurrentToken.Type == TokenType.Multi)
+            {
+                Eat(TokenType.Multi);
+                int rightValue = EvaluateExpression();
+                return leftValue * rightValue;
+            }
+            else if(CurrentToken.Type == TokenType.Div)
+            {
+
+                Eat(TokenType.Div);
+                int rightValue = EvaluateExpression();
+                return leftValue / rightValue;
+            }
+
+                return leftValue;
         }
     }
 }

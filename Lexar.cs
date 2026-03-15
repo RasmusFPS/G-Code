@@ -76,6 +76,16 @@ namespace G_Code
                     Advance();
                     return new Token (TokenType.Minus, "-");
                 }
+                if (CurrentChar == '*')
+                {
+                    Advance();
+                    return new Token (TokenType.Multi, "*");
+                }
+                if(CurrentChar == '/')
+                {
+                    Advance();
+                    return new Token(TokenType.Div, "/");
+                }
 
                 throw new Exception($"Lexer Error: Unexpected character '{CurrentChar}' at position {_position}");
             }

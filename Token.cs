@@ -14,6 +14,8 @@ namespace G_Code
         Equals,
         Plus,
         Minus,
+        Multi,
+        Div,
         EOF
     }
 
