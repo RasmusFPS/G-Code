@@ -4,7 +4,11 @@ The syntax:
 fps = variable
 print = to print in the console
 
-for now you can only do calculations in + or - but im working on multiplication and division's
+Operators that can be used:
++
+-
+*
+/
 
 Example of G-Code:
 
