@@ -12,7 +12,7 @@ namespace G_Code
         private readonly List<Token> _tokens;
         private int _position = 0;
 
-        private readonly Dictionary<string, int> _enviorment = new Dictionary<string, int>();
+        private readonly Dictionary<string, float> _enviorment = new Dictionary<string, float>();
 
         public Interpreter(List<Token> tokens)
         {
@@ -62,7 +62,7 @@ namespace G_Code
 
             Eat(TokenType.Equals);
 
-            int value = EvaluateExpression();
+            float value = EvaluateExpression();
 
             _enviorment[varName] = value;
         }
@@ -71,14 +71,14 @@ namespace G_Code
         {
             Eat(TokenType.Keyword);
 
-            int value = EvaluateExpression();
+            float value = EvaluateExpression();
 
             Console.WriteLine($"G-Code Output: {value}");
         }
 
-        private int EvaluateExpression()
+        private float EvaluateExpression()
         {
-            int leftValue = 0;
+            float leftValue = 0;
 
             if(CurrentToken.Type == TokenType.Numbers)
             {
@@ -106,27 +106,27 @@ namespace G_Code
             if (CurrentToken.Type == TokenType.Plus)
             {
                 Eat(TokenType.Plus);
-                int rightValue = EvaluateExpression();
+                float rightValue = EvaluateExpression();
                 return leftValue + rightValue;
             }
             else if(CurrentToken.Type == TokenType.Minus)
             {
                 Eat(TokenType.Minus);
-                int rightValue = EvaluateExpression();
+                float rightValue = EvaluateExpression();
                 return leftValue - rightValue;
             }
 
             else if(CurrentToken.Type == TokenType.Multi)
             {
                 Eat(TokenType.Multi);
-                int rightValue = EvaluateExpression();
+                float rightValue = EvaluateExpression();
                 return leftValue * rightValue;
             }
             else if(CurrentToken.Type == TokenType.Div)
             {
 
                 Eat(TokenType.Div);
-                int rightValue = EvaluateExpression();
+                float rightValue = EvaluateExpression();
                 return leftValue / rightValue;
             }
 
