@@ -4,11 +4,11 @@ The syntax:
 fps = variable
 print = to print in the console
 
-Operators that can be used:
-+
--
-*
-/
+Operators that can be used: 
+"+" 
+"-" 
+"*" 
+"/"
 
 Example of G-Code:
 
