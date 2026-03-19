@@ -4,23 +4,35 @@
     {
         static void Main(string[] args)
         {
+            Fun gg = new Fun();
             Console.Write("G-Code: ");
             string? code = Console.ReadLine();
-
-            Console.WriteLine("-- Tokenizing --");
-            Lexer lexer = new Lexer(code);
-            List<Token> tokens = lexer.TokenizeAll();
-
-            foreach (var token in tokens)
+            if (code == "GG")
             {
-                Console.WriteLine(token);
+
+                gg.StartGG();
             }
+            else if(code == "garfield")
+            {
+                gg.garfield();
+            }
+            else
+            {
+                Console.WriteLine("-- Tokenizing --");
+                Lexer lexer = new Lexer(code);
+                List<Token> tokens = lexer.TokenizeAll();
 
-            Console.WriteLine("\n --- Interpreting ---");
-            Interpreter interpreter = new Interpreter(tokens);
-            interpreter.Interpret();
+                foreach (var token in tokens)
+                {
+                    Console.WriteLine(token);
+                }
 
-            Console.ReadLine();
+                Console.WriteLine("\n --- Interpreting ---");
+                Interpreter interpreter = new Interpreter(tokens);
+                interpreter.Interpret();
+
+                Console.ReadLine();
+            }
         }
     }
 }
